@@ -1,0 +1,26 @@
+.profile-select{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profile-select__logout{
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+    font-family: inherit;
+    border: none;
+    border-radius: 3px;
+    background-color: #C6A969;
+    color: #F1E4C3;
+    padding: 0.6rem 1.2rem;
+    font-size: 2rem;
+}
+.profile-select__title{
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #C6A969;
+}

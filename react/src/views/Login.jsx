@@ -10,7 +10,7 @@ import Vinkje from "../assets/vinkje.svg";
 export default function Login() {
     const { token, setUser, setToken} = useStateContext()
     if (token) {
-        return  <Navigate to="/" />
+        return  <Navigate to="/profile" />
     }
 
     const emailRef = useRef();
@@ -80,7 +80,7 @@ export default function Login() {
                                     </span>
                                     
                                 </label>
-                                <Link to={"/signup"} className="loginOptionsWrapper__forgotpwd">Wachtwoord vergeten?</Link>
+                                <Link to={"/signup"} className="loginOptionsWrapper__forgotpwd">Heeft u nog geen account?</Link>
                         </div>
                         <button className="loginform__form__loginButton btn" onClick={onSubmit}>Inloggen</button>
                     </div>

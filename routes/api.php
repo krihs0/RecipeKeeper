@@ -2,14 +2,8 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\MonsterController;
-use App\Http\Controllers\Api\VersionController;
 use App\Http\Controllers\Api\ImageController;
-use App\Http\Controllers\Api\CollectionController;
-use App\Http\Controllers\Api\ShopsController;
-use App\Http\Controllers\Api\CollectionDestroyController;
-use App\Http\Controllers\Api\ShopCanController;
-use App\Http\Controllers\Api\ChangelogController;
+use App\Http\Controllers\Api\ProfileController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +32,10 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('/users', UserController::class);
 });
 
+Route::get('/profiles', [ProfileController::class, 'getProfiles'])->middleware('auth:api');
+Route::post('/profiles', [ProfileController::class, 'createProfile'])->middleware('auth:api');
+
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/image', [ImageController::class, 'imageStore']);
+Route::post('/image', [ImageController::class, 'imageStore'])->middleware('auth:api');

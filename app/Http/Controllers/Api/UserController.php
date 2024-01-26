@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\Profile;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -30,6 +31,14 @@ class UserController extends Controller
         $data = $request->validated();
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
+
+        Log::info('User created: ', ['user' => $user]); // Log the created user
+
+        $profile = Profile::create([
+            'user_id'=> 8,
+            'name' => $request->name,
+        ]);
+
         return response(new UserResource($user), 201);
     }
 

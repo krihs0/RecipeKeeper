@@ -3,6 +3,8 @@ import Login from "./views/Login.jsx";
 import NotFound from "./views/NotFound.jsx";
 import DefaultLayout from "./layouts/DefaultLayout.jsx";
 import HomePage from "./views/HomePage.jsx";
+import Signup from "./views/Signup.jsx";
+import ProfileSelect from "./views/ProfileSelect.jsx";
 
 const router = createBrowserRouter([
     {
@@ -16,8 +18,16 @@ const router = createBrowserRouter([
         ]
     },
     {
+        path: '/profile',
+        element: <ProfileSelect />
+    },
+    {
         path: '/login',
         element: <Login />
+    },
+    {
+        path: '/signup',
+        element: <Signup />
     },
     {
         path: '/',

@@ -76,6 +76,10 @@
                     &::placeholder{
                         color: #7f8a99;
                     }
+                    &:focus{
+                        outline: none;
+                        border: 1px solid #597E52;
+                    }
                 }
             }
             .loginform__form__loginOptionsWrapper{
@@ -125,6 +129,9 @@
                 font-size: 2rem;
                 cursor: pointer;
                 font-family: inherit;
+                &:hover{
+                    background: #4d6b44;
+                }
             }
 
             .loginOptionsWrapper__inputWrapper__label{
