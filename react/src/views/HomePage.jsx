@@ -1,14 +1,14 @@
 import "./HomePage.scss";
 import { useStateContext } from "../contexts/ContextProvider";
-import axiosClient from "../axios-client";
 
 const HomePage = () =>{
-    const {user, setUser, setToken} = useStateContext();
+    const { setUser, setProfileId, setToken } = useStateContext();
 
-    const onLogout = () =>{
+    const onLogout= () => {
         axiosClient.post('/logout')
             .then(() =>{
                 setUser({})
+                setProfileId(null)
                 setToken(null)
             })
     }

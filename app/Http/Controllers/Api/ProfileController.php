@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Import Auth
 use App\Models\Profile; // Import your Profile model
@@ -24,14 +25,14 @@ class ProfileController extends Controller
 
         // Validate the request data
         $request->validate([
-            'profile_name' => 'required',
+            'name' => 'required',
             // Add validation rules for other profile fields here
         ]);
 
         // Create a new profile and save it
         $profile = new Profile;
         $profile->user_id = $request->user_id;
-        $profile->name = $request->profile_name;
+        $profile->name = $request->name;
         // Assign other profile fields here
         $profile->save();
 

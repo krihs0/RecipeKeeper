@@ -3,13 +3,19 @@ import { useStateContext } from "../contexts/ContextProvider";
 import "./ProfileSelect.scss";
 import axiosClient from "../axios-client";
 import { useEffect, useState } from "react";
+import ProfileItem from "../components/ProfileItem/ProfileItem";
+import NewProfile from "../components/NewProfile/NewProfile";
 
 const ProfileSelect = () => {
-    const {token, setUser, setToken} = useStateContext();
+    const {token, profileId, setProfileId, setUser, setToken} = useStateContext();
     const [profiles, setProfiles] = useState([]);
 
     if (!token) {
         return <Navigate to="/login" />;
+    }
+
+    if(profileId){
+        return <Navigate to="/" />;
     }
 
     useEffect(() =>{
@@ -19,31 +25,25 @@ const ProfileSelect = () => {
             })
     } ,[])
 
-    const onLogout = () =>{
+    const onLogout= () => {
         axiosClient.post('/logout')
             .then(() =>{
                 setUser({})
+                setProfileId(null)
                 setToken(null)
             })
     }
-
-
 
     return(
         <div className="profile-select">
             <button className="profile-select__logout" onClick={onLogout}>Logout</button>
             <h1 className="profile-select__title">Selecteer een profiel</h1>
             <div className="profile-select__profiles">
-                {profiles.map(profile => (
-                    <div className="profile-select__profiles__profile" key={profile.id}>
-                        <figure></figure>
-                        <h2 className="profile-select__profiles__profile__name">{profile.name}</h2>
-                    </div>
+                {profiles.map((profile, index) => (
+                    <ProfileItem key={index} profile={profile} />
                 ))    
                 }
-                <div className="profile-select__profiles__profile">
-
-                </div>
+                <NewProfile />
             </div>
         </div>
     )

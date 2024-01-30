@@ -3,9 +3,11 @@ import {createContext, useState, useContext} from "react";
 const StateContext = createContext({
     user: null,
     token: null,
+    profileId: null,
     notification: null,
     setUser: () => {},
     setToken: () => {},
+    setProfileId: () => {},
     setNotification: () => {},
 })
 
@@ -13,7 +15,7 @@ export const ContextProvider = ({children}) =>{
     const [user, setUser] = useState({});
     const [notification, _setNotification] = useState('');
     const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN')); //localStorage.getItem('ACCESS_TOKEN')
-    const [profile, _setProfile] = useState(localStorage.getItem('PROFILE'));
+    const [profileId, _setProfileId] = useState(sessionStorage.getItem('PROFILE_ID'));
 
     const setNotification = (message) =>{
         _setNotification(message);
@@ -31,12 +33,12 @@ export const ContextProvider = ({children}) =>{
         }
     }
 
-    const setProfile = (token) =>{
-        _setProfile(token)
-        if(token) {
-            localStorage.setItem('ACCESS_TOKEN', token);
+    const setProfileId = (profileId) =>{
+        _setProfileId(profileId)
+        if(profileId) {
+            sessionStorage.setItem('PROFILE_ID', profileId);
         }else{
-            localStorage.removeItem( 'ACCESS_TOKEN');
+            sessionStorage.removeItem( 'PROFILE_ID');
         }
     }
 
@@ -45,10 +47,10 @@ export const ContextProvider = ({children}) =>{
             user,
             token,
             setUser,
-            profile,
             setToken,
-            setProfile,
+            profileId,
             notification,
+            setProfileId,
             setNotification,
         }}>
             {children}

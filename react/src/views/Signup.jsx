@@ -30,6 +30,7 @@ export default function Signup() {
       .then(({data}) => {
         setUser(data.user);
         setToken(data.token);
+        axiosClient.post('/profiles', {name: data.user.name, user_id: data.user.id})
       })
       .catch(err => {
         const response = err.response;

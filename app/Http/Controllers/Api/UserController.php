@@ -31,14 +31,7 @@ class UserController extends Controller
         $data = $request->validated();
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
-
-        Log::info('User created: ', ['user' => $user]); // Log the created user
-
-        $profile = Profile::create([
-            'user_id'=> 8,
-            'name' => $request->name,
-        ]);
-
+        // Log::info('User created: ', ['user' => $user]); // Log the created user
         return response(new UserResource($user), 201);
     }
 

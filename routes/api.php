@@ -30,12 +30,13 @@ Route::middleware('auth:sanctum')->group(function (){
     });
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::apiResource('/users', UserController::class);
+
+    Route::get('/profiles', [ProfileController::class, 'getProfiles']);
+    Route::post('/profiles', [ProfileController::class, 'createProfile']);
+
+    Route::post('/image', [ImageController::class, 'imageStore']);
 });
 
-Route::get('/profiles', [ProfileController::class, 'getProfiles'])->middleware('auth:api');
-Route::post('/profiles', [ProfileController::class, 'createProfile'])->middleware('auth:api');
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
-
-Route::post('/image', [ImageController::class, 'imageStore'])->middleware('auth:api');

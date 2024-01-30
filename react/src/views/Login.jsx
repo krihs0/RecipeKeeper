@@ -49,7 +49,7 @@ export default function Login() {
                 <div className="textWrapper">
                         <div className="textWrapper__div">
                         <h2 className="textWrapper__div__h2">RecipeKeeper</h2>
-                        <h1 className="textWrapper__div__h1">Altijd en overal jouw projecten inzichtelijk.</h1>
+                        <h1 className="textWrapper__div__h1">Altijd en overal jouw recepten inzichtelijk.</h1>
                     </div>
                 </div>
             </div>
