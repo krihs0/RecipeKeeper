@@ -19,6 +19,7 @@ class ProfileController extends Controller
 
         return response()->json($profiles); // Return the profiles as JSON
     }
+
     public function createProfile(Request $request)
     {
         $user = Auth::user(); // Get the currently logged in user
@@ -31,11 +32,23 @@ class ProfileController extends Controller
 
         // Create a new profile and save it
         $profile = new Profile;
-        $profile->user_id = $request->user_id;
+        $profile->user_id = $user->id;
         $profile->name = $request->name;
         // Assign other profile fields here
         $profile->save();
 
         return response()->json($profile); // Return the created profile as JSON
+    }
+
+    public function deleteProfile($id)
+    {
+        $profile = Profile::find($id); // Find the profile by its ID
+
+        if ($profile) {
+            $profile->delete(); // Delete the profile if it exists
+            return response()->json(['message' => 'Profile deleted successfully']);
+        } else {
+            return response()->json(['error' => 'Profile not found'], 404);
+        }
     }
 }

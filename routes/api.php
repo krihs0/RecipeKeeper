@@ -33,6 +33,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::get('/profiles', [ProfileController::class, 'getProfiles']);
     Route::post('/profiles', [ProfileController::class, 'createProfile']);
+    Route::delete('/profiles/{id}', [ProfileController::class, 'deleteProfile']);
 
     Route::post('/image', [ImageController::class, 'imageStore']);
 });

@@ -63,6 +63,31 @@
         }
     }
 }
+.profile-item__figure__delete, .profile-item__figure__edit, .profile-item__figure__confirm{
+    position: absolute;
+    top: .4rem;
+    right: .4rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: #C6A969;
+    color: #F1E4C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease;
+    &:hover{
+        background-color: hsl(41, 45%, 49%);
+    }
+}
+.profile-item__figure__delete{
+    left: .4rem;
+    right: auto;
+}
+.profile-item__figure__confirm{
+    font-size: 2.8rem;
+}
 .profile-item__name{
     font-size: 2rem;
     font-weight: 400;

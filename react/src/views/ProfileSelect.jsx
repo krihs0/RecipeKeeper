@@ -10,6 +10,16 @@ const ProfileSelect = () => {
     const {token, profileId, setProfileId, setUser, setToken} = useStateContext();
     const [profiles, setProfiles] = useState([]);
 
+    useEffect(() =>{
+        axiosClient.get("/user").then(({ data }) => {
+            setUser(data);
+        });
+        axiosClient.get('/profiles')
+            .then(({data}) =>{
+                setProfiles(data)
+            })
+    } ,[])
+    
     if (!token) {
         return <Navigate to="/login" />;
     }
@@ -18,12 +28,7 @@ const ProfileSelect = () => {
         return <Navigate to="/" />;
     }
 
-    useEffect(() =>{
-        axiosClient.get('/profiles')
-            .then(({data}) =>{
-                setProfiles(data)
-            })
-    } ,[])
+    
 
     const onLogout= () => {
         axiosClient.post('/logout')
@@ -34,16 +39,32 @@ const ProfileSelect = () => {
             })
     }
 
+    const deleteProfile = (id) => {
+        if(!window.confirm("Weet je zeker dat je dit profiel wilt verwijderen?")) return;
+        axiosClient.delete(`/profiles/${id}`)
+            .then(() =>{
+                setProfiles(profiles.filter(profile => profile.id !== id))
+            })
+    }
+
+    const createProfile = (name) => {
+        axiosClient.post('/profiles', {name: name})
+            .then(({data}) =>{
+                console.log(data);
+                setProfiles([...profiles, data])
+                return true;
+            })
+    }
     return(
         <div className="profile-select">
             <button className="profile-select__logout" onClick={onLogout}>Logout</button>
             <h1 className="profile-select__title">Selecteer een profiel</h1>
             <div className="profile-select__profiles">
                 {profiles.map((profile, index) => (
-                    <ProfileItem key={index} profile={profile} />
+                    <ProfileItem key={index} profile={profile} deleteProfile={deleteProfile} noDelete={profiles.length < 2}/>
                 ))    
                 }
-                <NewProfile />
+                {profiles.length < 4 && <NewProfile createProfile={createProfile} />}
             </div>
         </div>
     )
