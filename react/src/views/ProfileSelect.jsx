@@ -57,7 +57,7 @@ const ProfileSelect = () => {
     }
     return(
         <div className="profile-select">
-            <button className="profile-select__logout" onClick={onLogout}>Logout</button>
+            <button className="profile-select__logout" onClick={onLogout}>Uitloggen</button>
             <h1 className="profile-select__title">Selecteer een profiel</h1>
             <div className="profile-select__profiles">
                 {profiles.map((profile, index) => (

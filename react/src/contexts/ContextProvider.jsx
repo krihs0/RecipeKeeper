@@ -14,7 +14,7 @@ const StateContext = createContext({
 export const ContextProvider = ({children}) =>{
     const [user, setUser] = useState({});
     const [notification, _setNotification] = useState('');
-    const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN')); //localStorage.getItem('ACCESS_TOKEN')
+    const [token, _setToken] = useState(sessionStorage.getItem('ACCESS_TOKEN')); //sessionStorage.getItem('ACCESS_TOKEN')
     const [profileId, _setProfileId] = useState(sessionStorage.getItem('PROFILE_ID'));
 
     const setNotification = (message) =>{
@@ -27,9 +27,9 @@ export const ContextProvider = ({children}) =>{
     const setToken = (token) =>{
         _setToken(token)
         if(token) {
-            localStorage.setItem('ACCESS_TOKEN', token);
+            sessionStorage.setItem('ACCESS_TOKEN', token);
         }else{
-            localStorage.removeItem( 'ACCESS_TOKEN');
+            sessionStorage.removeItem( 'ACCESS_TOKEN');
         }
     }
 

@@ -19,7 +19,7 @@ const DefaultLayout = () => {
         axiosClient.get("/user").then(({ data }) => {
             setUser(data);
         });
-    });
+    },[]);
 
     return <Outlet />;
 }

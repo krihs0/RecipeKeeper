@@ -1,0 +1,120 @@
+.sliderbanner{
+    height: 40vh;
+    display: flex;
+}
+.sliderbanner__text{
+    background: #C6A969;
+    width: 40%;
+    height: 100%;
+    position: relative;
+}
+.sliderbanner__text__slide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 5rem;
+    &--active{
+        opacity: 1;
+    }
+}
+.sliderbanner__text__slide__title{
+    color: #FFFFEC;
+    font-weight: 500;
+    font-size: 4.8rem;
+}
+.sliderbanner__text__slide__description{
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: #FFFFEC;
+}
+.sliderbanner__text__slide__btn{
+    background: #ffffec;
+    border: none;
+    padding: 1.2rem 3.4rem;
+    font-size: inherit;
+    font-family: inherit;
+    width: fit-content;
+    border-radius: 0.3rem;
+    color: #C6A969;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+    cursor: pointer;
+    &:hover{
+        background: hsl(41, 45%, 84%);
+    }
+}
+.sliderbanner__container{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    overflow: hidden;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #C6A969 0%, rgba(0,0,0,0) 80%);
+        z-index: 100;
+    
+    }
+}
+.sliderbanner__container__slide{
+    width: 100%;
+    position: absolute;
+    display: none;
+    transition: all 0.5s ease-in-out;
+    z-index: 98;
+    &--active{
+        display: block;
+        left: 0;
+        z-index: 99;
+    }
+    &--next{
+        display: block;
+        transform: translateX(100%);
+    }
+    &--prev{
+        display: block;
+        transform: translateX(-100%);
+    }
+}
+.sliderbanner__container__slide__img{
+    width: 100%;
+    height: 100%;
+}
+
+.sliderbanner__container__pagination{
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    gap: 1rem;
+    bottom: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+.sliderbanner__container__pagination__dot{
+    width: 1.4rem;
+    height: 1.4rem;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &--active{
+        &::after{
+            content: '';
+            width: 70%;
+            height: 70%;
+            background: #C6A969;
+            border-radius: 50%;
+            display: block;
+        }
+    }
+}

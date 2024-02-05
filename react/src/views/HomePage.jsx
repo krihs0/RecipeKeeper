@@ -2,6 +2,7 @@ import "./HomePage.scss";
 import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios-client";
 import SliderBanner from "../components/SliderBanner/SliderBanner";
+import Menu from "../components/Menu/Menu";
 
 const HomePage = () =>{
     const { setUser, setProfileId, setToken, user } = useStateContext();
@@ -17,8 +18,8 @@ const HomePage = () =>{
 
     return (
         <div className="home">
+            <Menu />
             <SliderBanner />
-            <button onClick={onLogout}>logout</button>
         </div>
     );
 }
