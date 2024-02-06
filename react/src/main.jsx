@@ -12,3 +12,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </ContextProvider>
   </React.StrictMode>,
 )
+
+//https://colorhunt.co/palette/ffffecf1e4c3c6a969597e52
+//https://colorhunt.co/palette/561c246d2932c7b7a3e8d8c4

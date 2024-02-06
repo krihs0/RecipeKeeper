@@ -1,0 +1,42 @@
+.contentblock{
+    background: #FFFFEC;
+    display: flex;
+    padding: 5rem 12rem;
+}
+.contentblock__text{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.contentblock__text__title{
+    color: #C6A969;
+    font-weight: 400;
+    font-size: 4.2rem;
+}
+.contentblock__text__description{
+    color: #C6A969;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    letter-spacing: 0.05rem;
+}
+.contentblock__text__btn{
+    text-decoration: none;
+    color: #FFFFEC;
+    padding: 1rem 2rem;
+    border-radius: .4rem;
+    background: #C6A969;
+    width: fit-content;
+}
+.contentblock__figure{
+    width: 50%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+.contentblock__figure__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
