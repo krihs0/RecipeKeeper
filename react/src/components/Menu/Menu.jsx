@@ -45,7 +45,7 @@ const Menu = () => {
                 <span className="material-icons">favorite</span>
                 Favorieten
             </Link>
-            <Link className="nav__item">
+            <Link to="/createrecipe" className="nav__item">
                 <span className="material-icons">add_circle</span>
                 Nieuw Recept
             </Link>

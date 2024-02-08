@@ -5,6 +5,7 @@ import DefaultLayout from "./layouts/DefaultLayout.jsx";
 import HomePage from "./views/HomePage.jsx";
 import Signup from "./views/Signup.jsx";
 import ProfileSelect from "./views/ProfileSelect.jsx";
+import CreateRecipe from "./views/CreateRecipe.jsx";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomePage />
+            },
+            {
+                path: '/createrecipe',
+                element: <CreateRecipe />
             },
         ]
     },
